@@ -1,7 +1,7 @@
 // definition of a Customer interface
 
 interface ICustomer{
-  iD: number;
+  id: number;
   userName: string;
   firstName?: string;
   lastName?: string;

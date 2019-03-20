@@ -7,7 +7,7 @@ class App extends React.Component {
     adminUser: false,
     eMail: 'joe.shmoe@yahoo.com',
     firstName: 'Joe',
-    iD: 12345,
+    id: 12345,
     lastName: 'Shmoe',
     userName: 'userOne',
   };
@@ -33,7 +33,7 @@ class App extends React.Component {
           <tbody>
             <tr>
               <td>ID</td>
-              <td>{user.iD}</td>
+              <td>{user.id}</td>
             </tr>
             <tr>
               <td>User Name</td>

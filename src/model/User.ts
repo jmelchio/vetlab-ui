@@ -1,7 +1,7 @@
 // definition of a User interface
 
 interface IUser{
-  iD: number;
+  id: number;
   userName: string;
   firstName?: string;
   lastName?: string;
