@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import IUser from './model/User';
+import { IUser } from './model/User';
 
-class App extends React.Component {
+export class App extends React.Component {
   private user: IUser = {
     adminUser: false,
     eMail: 'joe.shmoe@yahoo.com',
@@ -61,5 +61,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;

@@ -1,6 +1,6 @@
 // definition of a User interface
 
-interface IUser{
+export interface IUser{
   id: number;
   userName: string;
   firstName?: string;
@@ -9,5 +9,3 @@ interface IUser{
   password?: string;
   adminUser: boolean;
 }
-
-export default IUser;

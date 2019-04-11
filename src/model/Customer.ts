@@ -1,6 +1,6 @@
 // definition of a Customer interface
 
-interface ICustomer{
+export interface ICustomer{
   id: number;
   userName: string;
   firstName?: string;
@@ -9,5 +9,3 @@ interface ICustomer{
   password?: string;
   vetOrgID: number;
 }
-
-export default ICustomer;
