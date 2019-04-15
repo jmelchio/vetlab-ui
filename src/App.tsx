@@ -70,6 +70,35 @@ export class App extends React.Component<any, IAppState> {
 // tslint:disable-next-line: no-console
     console.log(users);
     event.preventDefault();
+
+    const postUser = {
+      admin_user: this.state.user.adminUser,
+      email: this.state.user.eMail,
+      first_name: this.state.user.firstName,
+      last_name: this.state.user.lastName,
+      password: this.state.user.password,
+      user_name: this.state.user.userName,
+    };
+
+// tslint:disable-next-line: no-console
+    console.log(JSON.stringify(postUser));
+
+    const url = 'http://localhost:8080/user';
+
+    const fetchData: RequestInit = {
+      body: JSON.stringify(postUser),
+      headers: new Headers(),
+      method: 'POST',
+    };
+
+    fetch(url, fetchData).then(
+      (result: any) => {
+ // tslint:disable-next-line: no-console
+       console.log(result);
+      }).catch((reason: any) => {
+ // tslint:disable-next-line: no-console
+       console.log(reason);
+      });
   }
 
   private RenderForm = () => {
