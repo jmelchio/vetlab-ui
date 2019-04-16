@@ -84,10 +84,11 @@ export class App extends React.Component<any, IAppState> {
     console.log(JSON.stringify(postUser));
 
     const url = 'http://localhost:8080/user';
+    const requestHeaders = new Headers();
 
     const fetchData: RequestInit = {
       body: JSON.stringify(postUser),
-      headers: new Headers(),
+      headers: requestHeaders,
       method: 'POST',
     };
 
