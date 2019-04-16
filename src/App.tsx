@@ -48,6 +48,7 @@ export class App extends React.Component<any, IAppState> {
   private handleChange = (event: any) => {
 // tslint:disable-next-line: no-console
     // console.log(event.target.name + ' ' + event.target.value);
+    // TODO: handle checkbox properly
     const user = this.state.user;
     user[event.target.name] = event.target.value;
     this.setState({'user': user});
@@ -56,19 +57,6 @@ export class App extends React.Component<any, IAppState> {
   private onSubmit = (event: any) => {
 // tslint:disable-next-line: no-console
     console.log(this.state.user);
-    const user: IUser = {
-        adminUser: this.state.user.adminUser,
-        eMail: this.state.user.eMail,
-        firstName: this.state.user.firstName,
-        id: this.state.user.id,
-        lastName: this.state.user.lastName,
-        password: this.state.user.password,
-        userName: this.state.user.userName,
-    };
-    const users = this.state.users.concat([user]);
-    this.setState({'users': users})
-// tslint:disable-next-line: no-console
-    console.log(users);
     event.preventDefault();
 
     const postUser = {
@@ -80,22 +68,34 @@ export class App extends React.Component<any, IAppState> {
       user_name: this.state.user.userName,
     };
 
-// tslint:disable-next-line: no-console
-    console.log(JSON.stringify(postUser));
-
     const url = 'http://localhost:8080/user';
-    const requestHeaders = new Headers();
 
     const fetchData: RequestInit = {
       body: JSON.stringify(postUser),
-      headers: requestHeaders,
+      headers: new Headers(),
       method: 'POST',
     };
 
     fetch(url, fetchData).then(
       (result: any) => {
+        result.json().then((rjson: any) => {
  // tslint:disable-next-line: no-console
-       console.log(result);
+          console.log(rjson);
+          const user: IUser = {
+            adminUser: rjson.admin_user,
+            eMail: rjson.email,
+            firstName: rjson.first_name,
+            id: rjson.id,
+            lastName: rjson.last_name,
+            password: rjson.password,
+            userName: rjson.user_name,
+          };
+          const users = this.state.users.concat([user]);
+          this.setState({'users': users})
+        }).catch((parseError: any) => {
+ // tslint:disable-next-line: no-console
+          console.log(parseError);
+        })
       }).catch((reason: any) => {
  // tslint:disable-next-line: no-console
        console.log(reason);
@@ -164,6 +164,7 @@ export class App extends React.Component<any, IAppState> {
               <td>Last Name</td>
               <td>E-mail</td>
               <td>Admin User</td>
+              <td>Password (encrypted)</td>
             </tr>
           </thead>
           <tbody>
@@ -175,6 +176,7 @@ export class App extends React.Component<any, IAppState> {
                 <td>{user.lastName}</td>
                 <td>{user.eMail}</td>
                 <td>{user.adminUser}</td>
+                <td>{user.password}</td>
               </tr>
             )}
           </tbody>
