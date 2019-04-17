@@ -48,9 +48,12 @@ export class App extends React.Component<any, IAppState> {
   private handleChange = (event: any) => {
 // tslint:disable-next-line: no-console
     // console.log(event.target.name + ' ' + event.target.value);
-    // TODO: handle checkbox properly
     const user = this.state.user;
-    user[event.target.name] = event.target.value;
+    if(event.target.type === 'checkbox') {
+      user[event.target.name] = !user[event.target.name];
+    } else {
+      user[event.target.name] = event.target.value;
+    }
     this.setState({'user': user});
   }
 
