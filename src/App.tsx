@@ -105,9 +105,9 @@ export class App extends React.Component<any, IAppState> {
   private RenderForm = () => {
     return (
       <>
-        <div className="panel panel-default">
-          <div className="panel-heading">Submit User</div>
-          <div className="panel-body">
+        <div className="card">
+          <div className="card-header">Submit User</div>
+          <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <label>
@@ -146,7 +146,7 @@ export class App extends React.Component<any, IAppState> {
                 </label>
               </div>
               <div>
-                <input className="btn btn-success" type="submit" value="Submit" />
+                <input className="btn btn-primary" type="submit" value="Submit" />
               </div>
             </form>
           </div>
@@ -155,35 +155,39 @@ export class App extends React.Component<any, IAppState> {
     );
   }
 
+
   private RenderUser = (users: IUser[]) => {
     return (
-      <div>
-        <table className="table">
-          <thead>
-            <tr>
-              <td>ID</td>
-              <td>User Name</td>
-              <td>First Name</td>
-              <td>Last Name</td>
-              <td>E-mail</td>
-              <td>Admin User</td>
-              <td>Password (encrypted)</td>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) =>
-              <tr key={index} >
-                <td>{user.id}</td>
-                <td>{user.userName}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.eMail}</td>
-                <td>{user.adminUser}</td>
-                <td>{user.password}</td>
+      <div className="card">
+        <div className="card-header">Users Created</div>
+        <div className="card-body">
+          <table className="table">
+            <thead>
+              <tr>
+                <td>ID</td>
+                <td>User Name</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>E-mail</td>
+                <td>Admin User</td>
+                <td>Password (encrypted)</td>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user, index) =>
+                <tr key={index} >
+                  <td>{user.id}</td>
+                  <td>{user.userName}</td>
+                  <td>{user.firstName}</td>
+                  <td>{user.lastName}</td>
+                  <td>{user.eMail}</td>
+                  <td>{user.adminUser}</td>
+                  <td>{user.password}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
