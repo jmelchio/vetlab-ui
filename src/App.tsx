@@ -29,12 +29,9 @@ export class App extends React.Component<any, IAppState> {
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="jumbotron">
           <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        </div>
         <div>
           {this.RenderForm()}
         </div>
@@ -108,48 +105,51 @@ export class App extends React.Component<any, IAppState> {
   private RenderForm = () => {
     return (
       <>
-        <div>
-          <form onSubmit={this.onSubmit}>
-            <div>
-              <label>
-                User Name:
-                <input type="text" value={this.state.user.userName} onChange={this.handleChange} name="userName" />
-              </label>
-            </div>
-            <div>
-              <label>
-                First Name:
-                <input type="text" value={this.state.user.firstName} onChange={this.handleChange} name="firstName" />
-              </label>
-            </div>
-            <div>
-              <label>
-                Last Name:
-                <input type="text" value={this.state.user.lastName} onChange={this.handleChange} name="lastName" />
-              </label>
-            </div>
-            <div>
-              <label>
-                E-mail:
-                <input type="text" value={this.state.user.eMail} onChange={this.handleChange} name="eMail" />
-              </label>
-            </div>
-            <div>
-              <label>
-                Password:
-                <input type="password" value={this.state.user.password} onChange={this.handleChange} name="password" />
-              </label>
-            </div>
-            <div>
-              <label>
-                Admin User:
-                <input type="checkbox" checked={this.state.user.adminUser} onChange={this.handleChange} name="adminUser" />
-              </label>
-            </div>
-            <div>
-              <input type="submit" value="Submit" />
-            </div>
-          </form>
+        <div className="panel panel-default">
+          <div className="panel-heading">Submit User</div>
+          <div className="panel-body">
+            <form onSubmit={this.onSubmit}>
+              <div className="form-group">
+                <label>
+                  User Name:
+                  <input className="form-control" type="text" value={this.state.user.userName} onChange={this.handleChange} name="userName" />
+                </label>
+              </div>
+              <div className="form-group">
+                <label>
+                  First Name:
+                  <input className="form-control" type="text" value={this.state.user.firstName} onChange={this.handleChange} name="firstName" />
+                </label>
+              </div>
+              <div className="form-group">
+                <label>
+                  Last Name:
+                  <input className="form-control" type="text" value={this.state.user.lastName} onChange={this.handleChange} name="lastName" />
+                </label>
+              </div>
+              <div className="form-group">
+                <label>
+                  E-mail:
+                  <input className="form-control" type="text" value={this.state.user.eMail} onChange={this.handleChange} name="eMail" />
+                </label>
+              </div>
+              <div className="form-group">
+                <label>
+                  Password:
+                  <input className="form-control" type="password" value={this.state.user.password} onChange={this.handleChange} name="password" />
+                </label>
+              </div>
+              <div className="checkbox">
+                <label>
+                  <input type="checkbox" checked={this.state.user.adminUser} onChange={this.handleChange} name="adminUser" />
+                  Admin User
+                </label>
+              </div>
+              <div>
+                <input className="btn btn-success" type="submit" value="Submit" />
+              </div>
+            </form>
+          </div>
         </div>
       </>
     );
@@ -158,7 +158,7 @@ export class App extends React.Component<any, IAppState> {
   private RenderUser = (users: IUser[]) => {
     return (
       <div>
-        <table>
+        <table className="table">
           <thead>
             <tr>
               <td>ID</td>
