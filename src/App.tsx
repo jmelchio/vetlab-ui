@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { IUser } from './model/User';
+import { UserForm } from './UserForm';
 
 export interface IAppState {
   users: IUser[],
@@ -33,7 +34,7 @@ export class App extends React.Component<any, IAppState> {
           <h1 className="App-title">Welcome to React</h1>
         </div>
         <div>
-          {this.RenderForm()}
+          {UserForm({user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit})}
         </div>
         <div>
           {this.RenderUser(this.state.users)}
@@ -101,60 +102,6 @@ export class App extends React.Component<any, IAppState> {
        console.log(reason);
       });
   }
-
-  private RenderForm = () => {
-    return (
-      <>
-        <div className="card">
-          <div className="card-header">Submit User</div>
-          <div className="card-body">
-            <form onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <label>
-                  User Name:
-                  <input className="form-control" type="text" value={this.state.user.userName} onChange={this.handleChange} name="userName" />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  First Name:
-                  <input className="form-control" type="text" value={this.state.user.firstName} onChange={this.handleChange} name="firstName" />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  Last Name:
-                  <input className="form-control" type="text" value={this.state.user.lastName} onChange={this.handleChange} name="lastName" />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  E-mail:
-                  <input className="form-control" type="text" value={this.state.user.eMail} onChange={this.handleChange} name="eMail" />
-                </label>
-              </div>
-              <div className="form-group">
-                <label>
-                  Password:
-                  <input className="form-control" type="password" value={this.state.user.password} onChange={this.handleChange} name="password" />
-                </label>
-              </div>
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox" checked={this.state.user.adminUser} onChange={this.handleChange} name="adminUser" />
-                  Admin User
-                </label>
-              </div>
-              <div>
-                <input className="btn btn-primary" type="submit" value="Submit" />
-              </div>
-            </form>
-          </div>
-        </div>
-      </>
-    );
-  }
-
 
   private RenderUser = (users: IUser[]) => {
     return (
