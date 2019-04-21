@@ -35,29 +35,29 @@ export class App extends React.Component<any, IAppState> {
           <h1 className="App-title">Welcome to React</h1>
         </div>
         <div>
-          {UserForm({user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit})}
+          {UserForm({ user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit })}
         </div>
         <div>
-          {UserList({users: this.state.users})}
+          {UserList({ users: this.state.users })}
         </div>
       </div>
     );
   }
 
   private handleChange = (event: any) => {
-// tslint:disable-next-line: no-console
+    // tslint:disable-next-line: no-console
     // console.log(event.target.name + ' ' + event.target.value);
     const user = this.state.user;
-    if(event.target.type === 'checkbox') {
+    if (event.target.type === 'checkbox') {
       user[event.target.name] = !user[event.target.name];
     } else {
       user[event.target.name] = event.target.value;
     }
-    this.setState({'user': user});
+    this.setState({ 'user': user });
   }
 
   private onSubmit = (event: any) => {
-// tslint:disable-next-line: no-console
+    // tslint:disable-next-line: no-console
     console.log(this.state.user);
     event.preventDefault();
 
@@ -81,7 +81,7 @@ export class App extends React.Component<any, IAppState> {
     fetch(url, fetchData).then(
       (result: any) => {
         result.json().then((rjson: any) => {
- // tslint:disable-next-line: no-console
+          // tslint:disable-next-line: no-console
           console.log(rjson);
           const user: IUser = {
             adminUser: rjson.admin_user,
@@ -93,14 +93,14 @@ export class App extends React.Component<any, IAppState> {
             userName: rjson.user_name,
           };
           const users = this.state.users.concat([user]);
-          this.setState({'users': users})
+          this.setState({ 'users': users })
         }).catch((parseError: any) => {
- // tslint:disable-next-line: no-console
+          // tslint:disable-next-line: no-console
           console.log(parseError);
         })
       }).catch((reason: any) => {
- // tslint:disable-next-line: no-console
-       console.log(reason);
+        // tslint:disable-next-line: no-console
+        console.log(reason);
       });
   }
 
