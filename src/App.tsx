@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import { IUser } from './model/User';
 import { UserForm } from './UserForm';
+import { UserList } from './UserList';
 
 export interface IAppState {
   users: IUser[],
@@ -37,7 +38,7 @@ export class App extends React.Component<any, IAppState> {
           {UserForm({user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit})}
         </div>
         <div>
-          {this.RenderUser(this.state.users)}
+          {UserList({users: this.state.users})}
         </div>
       </div>
     );
@@ -103,39 +104,4 @@ export class App extends React.Component<any, IAppState> {
       });
   }
 
-  private RenderUser = (users: IUser[]) => {
-    return (
-      <div className="card">
-        <div className="card-header">Users Created</div>
-        <div className="card-body">
-          <table className="table">
-            <thead>
-              <tr>
-                <td>ID</td>
-                <td>User Name</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>E-mail</td>
-                <td>Admin User</td>
-                <td>Password (encrypted)</td>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) =>
-                <tr key={index} >
-                  <td>{user.id}</td>
-                  <td>{user.userName}</td>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.eMail}</td>
-                  <td>{user.adminUser}</td>
-                  <td>{user.password}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    );
-  }
 }
