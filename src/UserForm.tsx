@@ -1,6 +1,13 @@
 import * as React from 'react';
+import { IUser } from './model/User';
 
-export function UserForm(props: any): JSX.Element {
+export interface IUserFormProps {
+    onSubmit: (event: any) => void;
+    handleChange: (event: any) => void;
+    user: IUser;
+}
+
+export function UserForm(props: IUserFormProps): JSX.Element {
     return (
         <>
         <div className="card">
