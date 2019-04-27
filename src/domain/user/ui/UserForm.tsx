@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IUser } from './model/User';
+import { IUser } from '../User';
 
 export interface IUserFormProps {
   onSubmit: (event: any) => void;
@@ -15,7 +15,7 @@ export function UserForm(props: IUserFormProps): JSX.Element {
         <div className="card-body">
           <form onSubmit={props.onSubmit}>
             <div className="form-group">
-              <label> 
+              <label>
                 User Name:
                     <input className="form-control" type="text" value={props.user.userName} onChange={props.handleChange} name="userName" />
               </label>

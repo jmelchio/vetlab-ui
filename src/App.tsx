@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './App.css';
-import { IUser } from './model/User';
-import { UserForm } from './UserForm';
-import { UserList } from './UserList';
+import { UserForm } from './domain/user/ui/UserForm';
+import { UserList } from './domain/user/ui/UserList';
+import { IUser } from './domain/user/User';
 
 export interface IAppState {
   users: IUser[],
@@ -103,5 +103,4 @@ export class App extends React.Component<any, IAppState> {
         console.log(reason);
       });
   }
-
 }
