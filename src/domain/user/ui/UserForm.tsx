@@ -14,24 +14,29 @@ export function UserForm(props: IUserFormProps): JSX.Element {
       <div className="card-body">
         <form onSubmit={props.onSubmit}>
           <div className="form-group">
-            <label>User Name:</label>
+            <label>User Name:
             <input className="form-control" type="text" value={props.user.userName} onChange={props.handleChange} name="userName" />
+            </label>
           </div>
           <div className="form-group">
-            <label>First Name:</label>
+            <label>First Name:
             <input className="form-control" type="text" value={props.user.firstName} onChange={props.handleChange} name="firstName" />
+            </label>
           </div>
           <div className="form-group">
-            <label>Last Name:</label>
+            <label>Last Name:
             <input className="form-control" type="text" value={props.user.lastName} onChange={props.handleChange} name="lastName" />
+            </label>
           </div>
           <div className="form-group">
-            <label>E-mail:</label>
+            <label>E-mail:
             <input className="form-control" type="text" value={props.user.eMail} onChange={props.handleChange} name="eMail" />
+            </label>
           </div>
           <div className="form-group">
-            <label>Password:</label>
+            <label>Password:
             <input className="form-control" type="password" value={props.user.password} onChange={props.handleChange} name="password" />
+            </label>
           </div>
           <div className="checkbox">
             <input type="checkbox" checked={props.user.adminUser} onChange={props.handleChange} name="adminUser" />

@@ -14,12 +14,14 @@ export function UserLoginForm(props: IUserLoginProps): JSX.Element {
       <div className="card-body">
         <form onSubmit={props.onSubmit}>
           <div className="form-group">
-            <label>User Name:</label>
+            <label>User Name:
             <input className="form-control" type="text" value={props.userName} onChange={props.handleChange} name="userName" />
+            </label>
           </div>
           <div className="form-group">
-            <label>Password:</label>
+            <label>Password:
             <input className="form-control" type="password" value={props.password} onChange={props.handleChange} name="password" />
+            </label>
           </div>
           <div>
             <input className="btn btn-primary" type="submit" value="Submit" />
