@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import { UserForm } from './domain/user/ui/UserForm';
 import { UserList } from './domain/user/ui/UserList';
+import { UserUpdateForm } from './domain/user/ui/UserUpdateForm';
 import { IUser } from './domain/user/User';
 
 export interface IAppState {
@@ -35,7 +35,7 @@ export class App extends React.Component<any, IAppState> {
           <h1 className="App-title">Welcome to React</h1>
         </div>
         <div>
-          {UserForm({ user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit })}
+          {UserUpdateForm({ user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit })}
         </div>
         <div>
           {UserList({ users: this.state.users })}

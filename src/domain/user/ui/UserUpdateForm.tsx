@@ -7,7 +7,7 @@ export interface IUserFormProps {
   user: IUser;
 }
 
-export function UserForm(props: IUserFormProps): JSX.Element {
+export function UserUpdateForm(props: IUserFormProps): JSX.Element {
   return (
     <div className="card">
       <div className="card-header">Submit User</div>
