@@ -1,4 +1,4 @@
-import { Field, Form, Formik/*, ErrorMessage */ } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as React from 'react';
 import { IUser } from '../User';
 
@@ -19,26 +19,31 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                 <label>User Name:
                   <Field className="form-control" type="text" name="user.userName" />
                 </label>
+                <ErrorMessage name="user.userName" />
               </div>
               <div className="form-group">
                 <label>First Name:
                   <Field className="form-control" name="user.firstName" />
                 </label>
+                <ErrorMessage name="user.firstName" />
               </div>
               <div className="form-group">
                 <label>Last Name:
                   <Field className="form-control" type="text" name="user.lastName" />
                 </label>
+                <ErrorMessage name="user.lastName" />
               </div>
               <div className="form-group">
                 <label>E-mail:
                   <Field className="form-control" type="text" name="user.eMail" />
                 </label>
+                <ErrorMessage name="user.eMail" />
               </div>
               <div className="form-group">
                 <label>Password:
                   <Field className="form-control" type="password" name="user.password" />
                 </label>
+                <ErrorMessage name="user.password" />
               </div>
               <div className="checkbox">
                 <Field type="checkbox" name="user.adminUser" />
