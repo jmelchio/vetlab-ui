@@ -35,7 +35,7 @@ export class App extends React.Component<any, IAppState> {
           <h1 className="App-title">Welcome to React</h1>
         </div>
         <div>
-          {UserUpdateForm({ user: this.state.user, handleChange: this.handleChange, onSubmit: this.onSubmit })}
+          {UserUpdateForm({ user: this.state.user, onSubmit: this.onSubmit })}
         </div>
         <div>
           {UserList({ users: this.state.users })}
@@ -44,30 +44,17 @@ export class App extends React.Component<any, IAppState> {
     );
   }
 
-  private handleChange = (event: any) => {
-    // tslint:disable-next-line: no-console
-    // console.log(event.target.name + ' ' + event.target.value);
-    const user = this.state.user;
-    if (event.target.type === 'checkbox') {
-      user[event.target.name] = !user[event.target.name];
-    } else {
-      user[event.target.name] = event.target.value;
-    }
-    this.setState({ 'user': user });
-  }
-
   private onSubmit = (event: any) => {
     // tslint:disable-next-line: no-console
-    console.log(this.state.user);
-    event.preventDefault();
+    console.log(event.user);
 
     const postUser = {
-      admin_user: this.state.user.adminUser,
-      email: this.state.user.eMail,
-      first_name: this.state.user.firstName,
-      last_name: this.state.user.lastName,
-      password: this.state.user.password,
-      user_name: this.state.user.userName,
+      admin_user: event.user.adminUser,
+      email: event.user.eMail,
+      first_name: event.user.firstName,
+      last_name: event.user.lastName,
+      password: event.user.password,
+      user_name: event.user.userName,
     };
 
     const url = 'http://localhost:8080/user';
