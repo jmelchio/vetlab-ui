@@ -16,13 +16,13 @@ export class App extends React.Component<any, IAppState> {
 
     this.state = {
       user: {
-        adminUser: props.adminUser || false,
-        eMail: props.eMail || '',
-        firstName: props.firstName || '',
-        id: props.id || 0,
-        lastName: props.lastName || '',
-        password: props.password || '',
-        userName: props.userName || '',
+        adminUser: false,
+        eMail: '',
+        firstName: '',
+        id: 0,
+        lastName: '',
+        password: '',
+        userName: '',
       },
       users: [],
     };
@@ -45,8 +45,7 @@ export class App extends React.Component<any, IAppState> {
   }
 
   private onSubmit = (event: any) => {
-    // tslint:disable-next-line: no-console
-    console.log(event.user);
+    // alert(event.user);
 
     const postUser = {
       admin_user: event.user.adminUser,
@@ -68,8 +67,6 @@ export class App extends React.Component<any, IAppState> {
     fetch(url, fetchData).then(
       (result: any) => {
         result.json().then((rjson: any) => {
-          // tslint:disable-next-line: no-console
-          console.log(rjson);
           const user: IUser = {
             adminUser: rjson.admin_user,
             eMail: rjson.email,
@@ -80,14 +77,12 @@ export class App extends React.Component<any, IAppState> {
             userName: rjson.user_name,
           };
           const users = this.state.users.concat([user]);
-          this.setState({ 'users': users })
+          this.setState({ 'users': users });
         }).catch((parseError: any) => {
-          // tslint:disable-next-line: no-console
-          console.log(parseError);
+          alert(parseError);
         })
       }).catch((reason: any) => {
-        // tslint:disable-next-line: no-console
-        console.log(reason);
+        alert(reason);
       });
   }
 }
