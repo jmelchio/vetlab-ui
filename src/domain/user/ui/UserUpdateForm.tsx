@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IUser } from '../User';
 
 export interface IUserFormProps {
-  onSubmit: (event: any) => void;
+  onSubmit: (values: any, actions: any) => void;
   user: IUser;
 }
 

@@ -44,16 +44,16 @@ export class App extends React.Component<any, IAppState> {
     );
   }
 
-  private onSubmit = (event: any) => {
+  private onSubmit = (values: any, actions: any) => {
     // alert(event.user);
 
     const postUser = {
-      admin_user: event.user.adminUser,
-      email: event.user.eMail,
-      first_name: event.user.firstName,
-      last_name: event.user.lastName,
-      password: event.user.password,
-      user_name: event.user.userName,
+      admin_user: values.user.adminUser,
+      email: values.user.eMail,
+      first_name: values.user.firstName,
+      last_name: values.user.lastName,
+      password: values.user.password,
+      user_name: values.user.userName,
     };
 
     const url = 'http://localhost:8080/user';
@@ -78,6 +78,7 @@ export class App extends React.Component<any, IAppState> {
           };
           const users = this.state.users.concat([user]);
           this.setState({ 'users': users });
+          actions.setSubmitting(false);
         }).catch((parseError: any) => {
           alert(parseError);
         })
