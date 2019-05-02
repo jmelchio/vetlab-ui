@@ -50,7 +50,11 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                 <label>Admin User</label>
               </div>
               <div>
-                <input className="btn btn-primary" type="submit" value="Submit" disabled={isSubmitting} />
+                <input
+                  className="btn btn-primary"
+                  type="submit"
+                  value="Submit"
+                  disabled={isSubmitting} />
               </div>
             </Form>
           )}
