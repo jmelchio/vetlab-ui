@@ -30,9 +30,10 @@ export function UserLoginForm(props: IUserLoginProps): JSX.Element {
                   className="btn btn-primary"
                   type="submit"
                   value="Submit"
-                  disabled={isSubmitting} />
-                </div>
-              </Form>
+                  disabled={isSubmitting}
+                />
+              </div>
+            </Form>
           )}
         </Formik>
       </div>
