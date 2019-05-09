@@ -3,50 +3,62 @@ import * as React from 'react';
 import { IUser } from '../User';
 
 export interface IUserFormProps {
-  onSubmit: (values: any, actions: any) => void;
+  onSubmit: (values: IUser, actions: any) => void;
   user: IUser;
 }
 
+const validate = (values: IUser) => {
+  const errors: any = {};
+
+// tslint:disable-next-line: no-console
+  console.log(JSON.stringify(values));
+
+  errors.userName = 'something wrong';
+
+  return errors;
+}
+
 export function UserUpdateForm(props: IUserFormProps): JSX.Element {
+  const { user } = props;
   return (
     <div className="card">
       <div className="card-header">Submit User</div>
       <div className="card-body">
-        <Formik initialValues={{ user: props.user }} onSubmit={props.onSubmit}>
+        <Formik initialValues={ user } onSubmit={props.onSubmit} validate={validate}>
           {({ isSubmitting }) => (
             <Form>
               <div className="form-group">
                 <label>User Name:
-                  <Field className="form-control" type="text" name="user.userName" />
+                  <Field className="form-control" type="text" name="userName" />
                 </label>
-                <ErrorMessage name="user.userName" />
+                <ErrorMessage name="userName" component="div"/>
               </div>
               <div className="form-group">
                 <label>First Name:
-                  <Field className="form-control" name="user.firstName" />
+                  <Field className="form-control" name="firstName" />
                 </label>
-                <ErrorMessage name="user.firstName" />
+                <ErrorMessage name="firstName" component="div"/>
               </div>
               <div className="form-group">
                 <label>Last Name:
-                  <Field className="form-control" type="text" name="user.lastName" />
+                  <Field className="form-control" type="text" name="lastName" />
                 </label>
-                <ErrorMessage name="user.lastName" />
+                <ErrorMessage name="lastName" component="div"/>
               </div>
               <div className="form-group">
                 <label>E-mail:
-                  <Field className="form-control" type="text" name="user.eMail" />
+                  <Field className="form-control" type="text" name="eMail" />
                 </label>
-                <ErrorMessage name="user.eMail" />
+                <ErrorMessage name="eMail" component="div"/>
               </div>
               <div className="form-group">
                 <label>Password:
-                  <Field className="form-control" type="password" name="user.password" />
+                  <Field className="form-control" type="password" name="password" />
                 </label>
-                <ErrorMessage name="user.password" />
+                <ErrorMessage name="password" />
               </div>
               <div className="checkbox">
-                <Field type="checkbox" name="user.adminUser" />
+                <Field type="checkbox" name="adminUser" component="div"/>
                 <label>Admin User</label>
               </div>
               <div>
