@@ -13,19 +13,23 @@ const validate = (values: IUser) => {
 // tslint:disable-next-line: no-console
   console.log(JSON.stringify(values));
 
-  errors.userName = 'something wrong';
+  if (!values.userName) {
+    errors.userName = 'User Name required';
+  } else if (values.userName.length < 8) {
+    errors.userName = 'User Name must be at least 8 characters long';
+  }
 
   return errors;
 }
 
 export function UserUpdateForm(props: IUserFormProps): JSX.Element {
-  const { user } = props;
+  const { onSubmit, user } = props;
   return (
     <div className="card">
       <div className="card-header">Submit User</div>
       <div className="card-body">
-        <Formik initialValues={ user } onSubmit={props.onSubmit} validate={validate}>
-          {({ isSubmitting }) => (
+        <Formik initialValues={user} onSubmit={onSubmit} validate={validate}>
+          {({ isSubmitting, errors }) => (
             <Form>
               <div className="form-group">
                 <label>User Name:
@@ -66,7 +70,7 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                   className="btn btn-primary"
                   type="submit"
                   value="Submit"
-                  disabled={isSubmitting} />
+                  disabled={isSubmitting || !!Object.keys(errors).length} />
               </div>
             </Form>
           )}
