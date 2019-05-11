@@ -32,31 +32,31 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                 <label>User Name:
                   <Field className="form-control" type="text" name="userName" />
                 </label>
-                <ErrorMessage name="userName" component="div" className="custom-invalid-feedback" />
+                <ErrorMessage name="userName" component="small" className="form-text text-danger" />
               </div>
               <div className="form-group">
                 <label>First Name:
                   <Field className="form-control" name="firstName" />
                 </label>
-                <ErrorMessage name="firstName" component="div" className="custom-invalid-feedback" />
+                <ErrorMessage name="firstName" component="small" className="form-text text-danger" />
               </div>
               <div className="form-group">
                 <label>Last Name:
                   <Field className="form-control" type="text" name="lastName" />
                 </label>
-                <ErrorMessage name="lastName" component="div" className="custom-invalid-feedback" />
+                <ErrorMessage name="lastName" component="small" className="form-text text-danger" />
               </div>
               <div className="form-group">
                 <label>E-mail:
                   <Field className="form-control" type="text" name="eMail" />
                 </label>
-                <ErrorMessage name="eMail" component="div" className="custom-invalid-feedback" />
+                <ErrorMessage name="eMail" component="small" className="form-text text-danger" />
               </div>
               <div className="form-group">
                 <label>Password:
                   <Field className="form-control" type="password" name="password" />
                 </label>
-                <ErrorMessage name="password" component="div" className="custom-invalid-feedback" />
+                <ErrorMessage name="password" component="small" className="form-text text-danger" />
               </div>
               <div className="checkbox">
                 <Field type="checkbox" name="adminUser" component="div"/>
