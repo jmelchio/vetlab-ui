@@ -10,9 +10,6 @@ export interface IUserFormProps {
 const validate = (values: IUser) => {
   const errors: any = {};
 
-// tslint:disable-next-line: no-console
-  console.log(JSON.stringify(values));
-
   if (!values.userName) {
     errors.userName = 'User Name required';
   } else if (values.userName.length < 8) {
@@ -35,31 +32,31 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                 <label>User Name:
                   <Field className="form-control" type="text" name="userName" />
                 </label>
-                <ErrorMessage name="userName" component="div"/>
+                <ErrorMessage name="userName" component="div" className="custom-invalid-feedback" />
               </div>
               <div className="form-group">
                 <label>First Name:
                   <Field className="form-control" name="firstName" />
                 </label>
-                <ErrorMessage name="firstName" component="div"/>
+                <ErrorMessage name="firstName" component="div" className="custom-invalid-feedback" />
               </div>
               <div className="form-group">
                 <label>Last Name:
                   <Field className="form-control" type="text" name="lastName" />
                 </label>
-                <ErrorMessage name="lastName" component="div"/>
+                <ErrorMessage name="lastName" component="div" className="custom-invalid-feedback" />
               </div>
               <div className="form-group">
                 <label>E-mail:
                   <Field className="form-control" type="text" name="eMail" />
                 </label>
-                <ErrorMessage name="eMail" component="div"/>
+                <ErrorMessage name="eMail" component="div" className="custom-invalid-feedback" />
               </div>
               <div className="form-group">
                 <label>Password:
                   <Field className="form-control" type="password" name="password" />
                 </label>
-                <ErrorMessage name="password" />
+                <ErrorMessage name="password" component="div" className="custom-invalid-feedback" />
               </div>
               <div className="checkbox">
                 <Field type="checkbox" name="adminUser" component="div"/>
