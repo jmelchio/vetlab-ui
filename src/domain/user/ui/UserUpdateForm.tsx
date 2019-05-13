@@ -25,8 +25,11 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
     <div className="card">
       <div className="card-header">Submit User</div>
       <div className="card-body">
-        <Formik initialValues={user} onSubmit={onSubmit} validate={validate}>
-          {({ isSubmitting, errors }) => (
+        <Formik
+          initialValues={user}
+          onSubmit={onSubmit}
+          validate={validate}>
+          {({ errors, isSubmitting }) => (
             <Form>
               <div className="form-group">
                 <label>User Name:
