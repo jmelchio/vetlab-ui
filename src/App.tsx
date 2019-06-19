@@ -44,16 +44,16 @@ export class App extends React.Component<any, IAppState> {
     );
   }
 
-  private onSubmit = (values: any, actions: any) => {
+  private onSubmit = (values: IUser, actions: any) => {
     // alert(event.user);
 
     const postUser = {
-      admin_user: values.user.adminUser,
-      email: values.user.eMail,
-      first_name: values.user.firstName,
-      last_name: values.user.lastName,
-      password: values.user.password,
-      user_name: values.user.userName,
+      admin_user: values.adminUser,
+      email: values.eMail,
+      first_name: values.firstName,
+      last_name: values.lastName,
+      password: values.password,
+      user_name: values.userName,
     };
 
     const url = 'http://localhost:8080/user';
