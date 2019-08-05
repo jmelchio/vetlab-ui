@@ -32,10 +32,10 @@ export class App extends React.Component<any, IAppState> {
     return (
       <div className="App">
         <div className="jumbotron">
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Vetlab UI</h1>
         </div>
         <div>
-          {UserUpdateForm({ user: this.state.user, onSubmit: this.onSubmit })}
+          {UserUpdateForm({ user: this.state.user, onSubmit: this.createUser })}
         </div>
         <div>
           {UserList({ users: this.state.users })}
@@ -44,16 +44,16 @@ export class App extends React.Component<any, IAppState> {
     );
   }
 
-  private onSubmit = (values: IUser, actions: any) => {
+  private createUser = (user: IUser, actions: any) => {
     // alert(event.user);
 
     const postUser = {
-      admin_user: values.adminUser,
-      email: values.eMail,
-      first_name: values.firstName,
-      last_name: values.lastName,
-      password: values.password,
-      user_name: values.userName,
+      admin_user: user.adminUser,
+      email: user.eMail,
+      first_name: user.firstName,
+      last_name: user.lastName,
+      password: user.password,
+      user_name: user.userName,
     };
 
     const url = 'http://localhost:8080/user';
@@ -67,7 +67,7 @@ export class App extends React.Component<any, IAppState> {
     fetch(url, fetchData).then(
       (result: any) => {
         result.json().then((rjson: any) => {
-          const user: IUser = {
+          const newUser: IUser = {
             adminUser: rjson.admin_user,
             eMail: rjson.email,
             firstName: rjson.first_name,
@@ -76,7 +76,7 @@ export class App extends React.Component<any, IAppState> {
             password: rjson.password,
             userName: rjson.user_name,
           };
-          const users = this.state.users.concat([user]);
+          const users = this.state.users.concat([newUser]);
           this.setState({ 'users': users });
           actions.setSubmitting(false);
         }).catch((parseError: any) => {
