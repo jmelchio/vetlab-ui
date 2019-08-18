@@ -6,7 +6,7 @@ import { IUser } from './domain/user/User';
 
 export interface IAppState {
   users: IUser[],
-  user: IUser;
+  user: IUser,
 }
 
 export class App extends React.Component<any, IAppState> {
@@ -25,7 +25,7 @@ export class App extends React.Component<any, IAppState> {
         userName: '',
       },
       users: [],
-    };
+    }
   }
 
   public render() {
@@ -41,7 +41,7 @@ export class App extends React.Component<any, IAppState> {
           {UserList({ users: this.state.users })}
         </div>
       </div>
-    );
+    )
   }
 
   private createUser = (user: IUser, actions: any) => {
@@ -54,7 +54,7 @@ export class App extends React.Component<any, IAppState> {
       last_name: user.lastName,
       password: user.password,
       user_name: user.userName,
-    };
+    }
 
     const url = 'http://localhost:8080/user';
 
@@ -62,11 +62,16 @@ export class App extends React.Component<any, IAppState> {
       body: JSON.stringify(postUser),
       headers: new Headers(),
       method: 'POST',
-    };
+    }
 
-    fetch(url, fetchData).then(
-      (result: any) => {
-        result.json().then((rjson: any) => {
+    fetch(url, fetchData).then((response: Response) => {
+      if (!response.ok) {
+        response.text().then((text: any) => {
+          alert('Error message: ' + text)
+        })
+        actions.setSubmitting(false)
+      } else {
+        response.json().then((rjson: any) => {
           const newUser: IUser = {
             adminUser: rjson.admin_user,
             eMail: rjson.email,
@@ -75,15 +80,16 @@ export class App extends React.Component<any, IAppState> {
             lastName: rjson.last_name,
             password: rjson.password,
             userName: rjson.user_name,
-          };
-          const users = this.state.users.concat([newUser]);
-          this.setState({ 'users': users });
-          actions.setSubmitting(false);
+          }
+          const users = this.state.users.concat([newUser])
+          this.setState({ 'users': users })
+          actions.setSubmitting(false)
         }).catch((parseError: any) => {
-          alert(parseError);
+          alert(parseError.className + parseError)
         })
-      }).catch((reason: any) => {
-        alert(reason);
-      });
+      }
+    }).catch((reason: any) => {
+      alert(reason);
+    })
   }
 }
