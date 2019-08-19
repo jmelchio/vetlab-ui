@@ -69,7 +69,6 @@ export class App extends React.Component<any, IAppState> {
         response.text().then((text: any) => {
           alert('Error message: ' + text)
         })
-        actions.setSubmitting(false)
       } else {
         response.json().then((rjson: any) => {
           const newUser: IUser = {
@@ -83,11 +82,11 @@ export class App extends React.Component<any, IAppState> {
           }
           const users = this.state.users.concat([newUser])
           this.setState({ 'users': users })
-          actions.setSubmitting(false)
         }).catch((parseError: any) => {
           alert(parseError.className + parseError)
         })
       }
+      actions.setSubmitting(false)
     }).catch((reason: any) => {
       alert(reason);
     })
