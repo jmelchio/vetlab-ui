@@ -54,7 +54,7 @@ export class App extends React.Component<any, IAppState> {
       last_name: user.lastName,
       password: user.password,
       user_name: user.userName,
-    }
+    };
 
     const url = 'http://localhost:8080/user';
 
@@ -62,7 +62,7 @@ export class App extends React.Component<any, IAppState> {
       body: JSON.stringify(postUser),
       headers: new Headers(),
       method: 'POST',
-    }
+    };
 
     fetch(url, fetchData).then((response: Response) => {
       if (!response.ok) {
@@ -79,8 +79,8 @@ export class App extends React.Component<any, IAppState> {
             lastName: rjson.last_name,
             password: rjson.password,
             userName: rjson.user_name,
-          }
-          const users = this.state.users.concat([newUser])
+          };
+          const users = this.state.users.concat([newUser]);
           this.setState({ 'users': users })
         }).catch((parseError: any) => {
           alert(parseError.className + parseError)

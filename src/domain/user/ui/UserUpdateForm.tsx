@@ -17,7 +17,7 @@ const validate = (values: IUser) => {
   }
 
   return errors;
-}
+};
 
 export function UserUpdateForm(props: IUserFormProps): JSX.Element {
   const { onSubmit, user } = props;

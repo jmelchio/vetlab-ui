@@ -17,7 +17,7 @@ const validate = (values: any):any => {
   }
 
   return errors;
-}
+};
 
 export function UserLoginForm(props: IUserLoginProps): JSX.Element {
   return (
