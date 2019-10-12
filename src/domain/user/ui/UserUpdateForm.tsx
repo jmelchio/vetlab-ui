@@ -62,7 +62,7 @@ export function UserUpdateForm(props: IUserFormProps): JSX.Element {
                 <ErrorMessage name="password" component="small" className="form-text text-danger" />
               </div>
               <div className="checkbox">
-                <Field type="checkbox" name="adminUser" component="div"/>
+                <Field type="checkbox" name="adminUser" component="div" />
                 <label>Admin User</label>
               </div>
               <div>
