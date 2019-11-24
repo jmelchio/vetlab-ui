@@ -5,7 +5,7 @@ export interface IUserLoginProps {
   onSubmit: (event: any) => void;
 }
 
-const validate = (values: any):any => {
+const validate = (values: any): any => {
   const errors: any = {};
 
   if (!values.userName) {
@@ -19,7 +19,7 @@ const validate = (values: any):any => {
   return errors;
 };
 
-export function UserLoginForm(props: IUserLoginProps): JSX.Element {
+export const UserLoginForm = (props: IUserLoginProps): JSX.Element => {
   return (
     <div className="card">
       <div className="card-header">Login User</div>
@@ -28,7 +28,7 @@ export function UserLoginForm(props: IUserLoginProps): JSX.Element {
           initialValues={{userName: '', password: ''}}
           onSubmit={props.onSubmit}
           validate={validate}>
-          {({ errors, isSubmitting }) => (
+          {({errors, isSubmitting}) => (
             <Form>
               <div className="form-group">
                 <label>User Name:

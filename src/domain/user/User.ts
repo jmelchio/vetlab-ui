@@ -1,6 +1,6 @@
-// definition of a User interface
+// definition of a User
 
-export interface IUser{
+export interface IUser {
   id: number;
   userName: string;
   firstName?: string;

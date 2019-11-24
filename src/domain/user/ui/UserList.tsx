@@ -5,7 +5,7 @@ export interface IUserListProps {
   users: IUser[];
 }
 
-export function UserList(props: IUserListProps): JSX.Element {
+export const UserList = (props: IUserListProps): JSX.Element => {
   return (
     <div className="card">
       <div className="card-header">Users List</div>

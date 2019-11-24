@@ -19,17 +19,14 @@ const validate = (values: IUser) => {
   return errors;
 };
 
-export function UserUpdateForm(props: IUserFormProps): JSX.Element {
-  const { onSubmit, user } = props;
+export const UserUpdateForm = (props: IUserFormProps): JSX.Element => {
+  const {onSubmit, user} = props;
   return (
     <div className="card">
       <div className="card-header">Submit User</div>
       <div className="card-body">
-        <Formik
-          initialValues={user}
-          onSubmit={onSubmit}
-          validate={validate}>
-          {({ errors, isSubmitting }) => (
+        <Formik initialValues={user} onSubmit={onSubmit} validate={validate}>
+          {({errors, isSubmitting}) => (
             <Form>
               <div className="form-group">
                 <label>User Name:

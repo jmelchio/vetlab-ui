@@ -31,9 +31,6 @@ export class App extends React.Component<any, IAppState> {
   public render() {
     return (
       <div className="App">
-        <div className="jumbotron">
-          <h1 className="App-title">Vetlab UI</h1>
-        </div>
         <div>
           {UserUpdateForm({ user: this.state.user, onSubmit: this.createUser })}
         </div>
@@ -45,7 +42,6 @@ export class App extends React.Component<any, IAppState> {
   }
 
   private createUser = (user: IUser, actions: any) => {
-    // alert(event.user);
 
     const postUser = {
       admin_user: user.adminUser,

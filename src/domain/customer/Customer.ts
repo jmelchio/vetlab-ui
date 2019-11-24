@@ -1,6 +1,6 @@
-// definition of a Customer interface
+// definition of a Customer
 
-export interface ICustomer{
+export interface ICustomer {
   id: number;
   userName: string;
   firstName?: string;
