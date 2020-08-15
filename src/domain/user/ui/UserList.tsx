@@ -19,7 +19,7 @@ export const UserList = (props: IUserListProps): JSX.Element => {
               <td>Last Name</td>
               <td>E-mail</td>
               <td>Admin User</td>
-              <td>Password (encrypted)</td>
+              <td>Password (hashed)</td>
             </tr>
           </thead>
           <tbody>
