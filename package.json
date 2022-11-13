@@ -7,7 +7,7 @@
     "jquery": "^3.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts-ts": "^3.1.0",
+    "react-scripts-ts": "^4.0.8",
     "webpack": "^4.41.2"
   },
   "scripts": {
